@@ -1,13 +1,13 @@
-import urllib.request
+from urllib.request import urlopen
 import json
 import time
 
 key = "/*get the api key by google*/"
 
-datapewds = urllib.request.urlopen("https://www.googleapis.com/youtube/v3/channels?part=statistics&forUsername="+"pewdiepie"+"&key="+key).read()
+datapewds = urlopen("https://www.googleapis.com/youtube/v3/channels?part=statistics&forUsername="+"pewdiepie"+"&key="+key).read()
 subspewds = int(json.loads(datapewds.decode('utf-8'))["items"][0]["statistics"]["subscriberCount"])
 
-datatseries = urllib.request.urlopen("https://www.googleapis.com/youtube/v3/channels?part=statistics&forUsername="+"tseries"+"&key="+key).read()
+datatseries = urlopen("https://www.googleapis.com/youtube/v3/channels?part=statistics&forUsername="+"tseries"+"&key="+key).read()
 substseries = int(json.loads(datatseries.decode('utf-8'))["items"][0]["statistics"]["subscriberCount"])
 
 diff = subspewds-substseries
